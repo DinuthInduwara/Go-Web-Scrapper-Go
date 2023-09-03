@@ -7,9 +7,9 @@ import (
 
 func RertiveDetails(url string) (*Headers, error) {
 	logfuncs.Logger.Infoln("[:] We Checking ", url)
-	resp, err := http.Head(url)
+	resp, err := http.Get(url)
 	if err != nil {
-		logfuncs.Logger.Errorln("[£] We Cant Checking ", url, " Because Error = ", err)
+		logfuncs.LogError.Errorln("[£] We Cant Checking ", url, " Because Error = ", err)
 		return nil, err
 	}
 	defer resp.Body.Close()

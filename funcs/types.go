@@ -1,10 +1,14 @@
 package funcs
 
 import (
+	"Go_Web_Scrapper/db"
 	"net/url"
+	"os"
 )
 
 var URL *MyURL
+var PendingItems = make(chan *db.FileDB, 200)
+var LogFile, _ = os.OpenFile("error.log", os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0666)
 
 type MyURL struct {
 	*url.URL
